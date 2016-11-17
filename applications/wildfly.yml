@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wildfly-web
+  labels:
+    run: wildfly-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: wildfly
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wildfly-app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wildfly
+        tier: frontend
+        role: app-server
+    spec:
+      containers:
+      - name: wildfly
+        image: jboss/wildfly
+        ports:
+        - containerPort: 8080
