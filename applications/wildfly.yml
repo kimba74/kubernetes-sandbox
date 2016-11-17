@@ -30,3 +30,8 @@ spec:
         image: jboss/wildfly
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
