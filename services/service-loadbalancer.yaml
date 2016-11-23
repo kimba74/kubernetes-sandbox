@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-lb
+  labels:
+    env: test
+    type: LoadBalancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 1234
+    targetPort: 8080
+  selector:
+    app: test
