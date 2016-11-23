@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-example
+  labels:
+    env: example
+    type: inline
+data:
+  data.name: John Doe
+  data.type: user
+  data.role: manager
+  data.file: |
+    file.type: config
+    file.data: key-value
+    file.app: none
